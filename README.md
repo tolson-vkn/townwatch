@@ -23,7 +23,7 @@ Usage:
   townwatch [command]
 
 Available Commands:
-  check       Start log watch server
+  check       Check config file
   help        Help about any command
   patrol      Start log watch server
   version     print version
