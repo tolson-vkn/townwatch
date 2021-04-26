@@ -1,7 +1,7 @@
 # Townwatch
 
 Townwatch a simple alerting utility for servers. It is named for the Age of Empires 2 [upgrade of the same name][townwatchaoe].
-Which is an upgrade seldomly used in competitive play as there are usually better options; e.g. Loom, Wheelbarrow.
+Townwatch which is an upgrade seldomly used in competitive play as there are usually better options; e.g. Loom, Wheelbarrow.
 
 Like it's namesake there is probably a better server monitoring tool than townwatch. This tool is intended for simple
 monitoring. It functions by using regular expressions and a set of notification methods. Good uses are:
@@ -23,7 +23,7 @@ Usage:
   townwatch [command]
 
 Available Commands:
-  check       Start log watch server
+  check       Check config file
   help        Help about any command
   patrol      Start log watch server
   version     print version
