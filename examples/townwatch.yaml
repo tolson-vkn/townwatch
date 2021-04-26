@@ -1,0 +1,37 @@
+receiver:
+  type: smtp
+  sender_email: townwatch@example.com
+  recipient_email: theAdmin@example.com
+  account_email: accountHolder@example.com
+  password: akj32lkc02j
+  smtp_server: smtp.example.com
+  smtp_port: 587
+
+watchers:
+  - name: SSHD Login
+    regex: '(?P<Line>(?P<Method>sshd|su(?:do)?)(?:\[\d+\])?: pam_unix\(\w+:session\): session opened for user (?P<User>\w+))'
+    path: /var/log/auth.log
+    examples:
+      - 'Apr 27 11:01:19 edoras sudo: pam_unix(sudo:session): session opened for user root by theoden(uid=0)'
+    title: '{{.User}} has logged into server with SSH'
+    message: |
+      The user [{{.User}}] has logged in via method: {{.Method}}
+      Full log line: {{.Line}}
+
+  - name: Fail2Ban
+    regex: '(?P<Line>.* Ban (?P<IP>((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)))'
+    path: /var/log/fail2ban.log
+    examples:
+      - '2006-02-13 16:56:27,086 fail2ban.actions: WARNING [ssh] Ban 21.136.60.164'
+    title: "Fail2Ban blocks IP {{.IP}} "
+    message: "Full Line: {{.Line}}"
+
+  - name: Zoneminder Bad Auth
+    regex: '(?P<Line>.* [Login denied for user "(?P<User>\w+)"])'
+    path: /var/log/zmc.log
+    examples:
+      - 'Apr 25 22:48:32 31dc141f6df8 web_php[14950]: ERR [Login denied for user "admin"]'
+    title: "Zoneminder had bad auth"
+    message: "Full Line: {{.Line}}"
+
+
