@@ -13,7 +13,7 @@ var versionCmd = &cobra.Command{
 	Long:  `print version`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Townwatch Version Info:")
-		fmt.Printf("Version: %s\n", version.VersionString())
-		fmt.Printf("Commit:  %s\n", version.GitCommitString())
+		fmt.Printf("Version: %s\n", version.Version)
+		fmt.Printf("Commit:  %s\n", version.GitCommit)
 	},
 }
