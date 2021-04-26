@@ -179,15 +179,6 @@ Go templating in title and message support all go template actions. For example 
 title: '{{ if (eq .User "root")}}[Urgent!] {{end}}{{.User}} has logged into server with SSH'
 ```
 
-TODO:
-
-* Bundle notifications, right now just one receiver allowed.
-* Unit tests (`./townwatch check`) works decently ok for now.
-* Multiple regex per file, or a singleton tail object for all similar file watchers.
-* Tail support for the linux journal `journalctl -fu foo.service`
-  * Same but for `docker logs`
-  * Guessing, create logger interface; file, journal, docker.
-
 ## Developing
 
 Typically I have done the following:
@@ -204,6 +195,16 @@ _Term2_
 $ echo 'Apr 27 11:01:19 edoras sudo: pam_unix(sudo:session): session opened for user root by theoden(uid=0)' >> /tmp/auth.log
 ```
 Repeat.
+
+
+## TODO:
+
+* Bundle notifications, right now just one receiver allowed.
+* Unit tests (`./townwatch check`) works decently ok for now.
+* Multiple regex per file, or a singleton tail object for all similar file watchers.
+* Tail support for the linux journal `journalctl -fu foo.service`
+  * Same but for `docker logs`
+  * Guessing, create logger interface; file, journal, docker.
 
 [townwatchaoe]: https://ageofempires.fandom.com/wiki/Town_Watch_(Age_of_Empires_II)
 [prometheus]: https://prometheus.io/
