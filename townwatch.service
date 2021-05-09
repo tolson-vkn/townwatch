@@ -1,0 +1,12 @@
+[Unit]
+Description=Townwatch service - Alerts for logline regex matches
+
+[Service]
+Type=simple
+# Of course, change this to your sandbox or leave out for default /etc/townwatch/townwatch.yaml
+Environment="TOWNWATCH_CONFIG_ARGS=--config=/home/tolson/git/townwatch/examples/townwatch.yaml"
+ExecStart=/usr/local/bin/townwatch patrol $TOWNWATCH_CONFIG_ARGS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
